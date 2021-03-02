@@ -26,34 +26,47 @@ body {
 }
 
 .circular-buttons {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    border: 0;
-    outline: none !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.25s all ease-in-out;
-  }
-  
-  .circular-buttons:hover {
-    width: 30px;
-    height: 30px;
-    background-color: darkgrey;
-    transition: 0.25s all ease-in-out;
-  }
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 0;
+  outline: none !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.25s all ease-in-out;
+}
 
-  .question-pallete > ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-evenly;
-  }
-  
-  .question-pallete > ul > li {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-  }
+.circular-buttons:hover {
+  width: 30px;
+  height: 30px;
+  background-color: darkgrey;
+  transition: 0.25s all ease-in-out;
+}
+
+.question-pallete > ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.question-pallete > ul > li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+}
+
+.question-symbol {
+  font-size: 1.6rem !important;
+  font-weight: 400 !important;
+}
+
+.question-content {
+  text-align: left;
+}
+
+.option-container {
+  padding-left: 11%;
+}

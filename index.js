@@ -1,36 +1,5 @@
 let app = angular.module("app1", []);
 app.controller("main-controller", function ($scope, $interval) {
-  $scope.time = 3;
-  const decreaseCounter = function () {
-    $scope.time -= 1;
-    if ($scope.time == 0) {
-      $scope.cancelTimerInterval();
-    }
-  };
-  let counterPromise = $interval(decreaseCounter, 1000);
-  $scope.cancelTimerInterval = function () {
-    $interval.cancel(counterPromise);
-    $scope.time = "Ended!";
-  };
-
-  $scope.printMessage = function () {
-    $scope.time = 0;
-    $scope.cancelTimerInterval();
-  };
-});
-
-app.controller("Question-Mover", function ($scope, $interval) {
-  $scope.test = "Hello World!";
-
-  $scope.range = function (min, max, step) {
-    step = step || 1;
-    let input = [];
-    for (let i = min; i <= max; i += step) {
-      input.push(i);
-    }
-    return input;
-  };
-
   $scope.questions = [
     {
       id: 1,
@@ -121,11 +90,88 @@ app.controller("Question-Mover", function ($scope, $interval) {
       opt4: " None of These ",
     },
   ];
+  $scope.time = 3;
+  $scope.QuestionVisible = true;
+  $scope.resultArray = Array($scope.questions.length).fill("");
+  $scope.currentQuestion = $scope.questions[0];
+  $scope.currentQuestionNumber = 1;
+  $scope.rightEnable = true;
+  $scope.leftEnable = false;
 
-  
-  $scope.displayQuestion = function (id) {
-    id = id || 1;
-    $scope.question = questions[id - 1];
-    console.log($scope.question);
+  const decreaseCounter = function () {
+    $scope.time -= 1;
+    if ($scope.time == 0) {
+      $scope.cancelTimerInterval();
+    }
+  };
+  let counterPromise = $interval(decreaseCounter, 1000);
+  $scope.cancelTimerInterval = function () {
+    $interval.cancel(counterPromise);
+    $scope.time = "Ended!";
+    $scope.QuestionVisible = false;
+    $scope.resultJSON = {answers:$scope.resultArray};
+
+  };
+
+  $scope.printMessage = function () {
+    $scope.time = 0;
+    $scope.cancelTimerInterval();
+  };
+
+  $scope.test = "Hello World!";
+
+  $scope.range = function (min, max, step) {
+    step = step || 1;
+    let input = [];
+    for (let i = min; i <= max; i += step) {
+      input.push(i);
+    }
+    return input;
+  };
+
+  $scope.changeCurrentQuestion = function (event) {
+    let newQuestionNumber = parseInt(event.target.id);
+    $scope.currentQuestion = $scope.questions[newQuestionNumber - 1];
+    $scope.currentQuestionNumber = newQuestionNumber;
+    $scope.checkEnabledButtons();
+    $scope.checkOptionEnabled();
+  };
+
+  $scope.increment = function (event) {
+    $scope.currentQuestionNumber += 1;
+    $scope.currentQuestion = $scope.questions[$scope.currentQuestionNumber - 1];
+    $scope.checkEnabledButtons();
+    $scope.checkOptionEnabled();
+  };
+
+  $scope.decrement = function (event) {
+    $scope.currentQuestionNumber -= 1;
+    $scope.currentQuestion = $scope.questions[$scope.currentQuestionNumber - 1];
+    $scope.checkEnabledButtons();
+    $scope.checkOptionEnabled();
+  };
+  $scope.checkEnabledButtons = () => {
+    if ($scope.currentQuestionNumber === 10) {
+      $scope.rightEnable = false;
+    } else if ($scope.currentQuestionNumber === 1) {
+      $scope.leftEnable = false;
+    } else {
+      $scope.rightEnable = true;
+      $scope.leftEnable = true;
+    }
+  };
+  $scope.checkOptionEnabled = () => {
+    if ($scope.resultArray[$scope.currentQuestionNumber - 1] !== "") {
+      $scope.currentChecked =
+        $scope.resultArray[$scope.currentQuestionNumber - 1];
+    } else {
+      $scope.currentChecked = "e";
+    }
+  };
+
+  $scope.checkEnabledButtons();
+
+  $scope.addData = function (event) {
+    $scope.resultArray[$scope.currentQuestionNumber - 1] = event.target.id;
   };
 });
