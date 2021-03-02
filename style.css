@@ -1,8 +1,59 @@
-body{
-    width:100;
-    font-family: 'Poppins', sans-serif;
+body {
+  width: 100%;
+  font-family: "Poppins", sans-serif;
 }
-#end-test-button{
-    outline: none;
 
+#end-test-button {
+  outline: none;
 }
+
+.right-button {
+  position: fixed;
+  top: 45vh;
+  right: 0;
+  border: none;
+  height: 10vh;
+  width: 5vw;
+}
+
+.left-button {
+  position: fixed;
+  top: 45vh;
+  left: 0;
+  border: none;
+  height: 10vh;
+  width: 5vw;
+}
+
+.circular-buttons {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 0;
+    outline: none !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.25s all ease-in-out;
+  }
+  
+  .circular-buttons:hover {
+    width: 30px;
+    height: 30px;
+    background-color: darkgrey;
+    transition: 0.25s all ease-in-out;
+  }
+
+  .question-pallete > ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .question-pallete > ul > li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+  }

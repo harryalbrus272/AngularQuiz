@@ -1,30 +1,84 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="app1">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js" integrity="sha512-7oYXeK0OxTFxndh0erL8FsjGvrl2VMDor6fVqzlLGfwOQQqTbYsGPv4ZZ15QHfSk80doyaM0ZJdvkyDcVO7KFA==" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/8df9af38e0.js" crossorigin="anonymous"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"
+      integrity="sha512-7oYXeK0OxTFxndh0erL8FsjGvrl2VMDor6fVqzlLGfwOQQqTbYsGPv4ZZ15QHfSk80doyaM0ZJdvkyDcVO7KFA=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/8df9af38e0.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Test Approach</title>
-</head>
-<body >
-    <nav class="navbar d-flex flex-wrap-reverse navbar-expand-lg navbar-dark bg-danger mb-3 py-3 text-light">
-        <div class="col-5 d-flex justify-content-center">AngularJS quiz</div>
-        <div class="col-3">Timer</div>
-        <button type="submit" class="btn btn-light col-3 justify-content-center" id="end-test-button" ng-click="printMessage()">End test</button>
+  </head>
+  <body ng-controller="main-controller">
+    <nav
+      class="navbar d-flex flex-wrap-reverse navbar-expand-lg navbar-dark bg-danger mb-3 py-3 text-light"
+    >
+      <div class="col-5 d-flex justify-content-center">AngularJS quiz</div>
+      <div class="col-3">Timer:<span ng-bind="time"></span></div>
+      <button
+        type="submit"
+        class="btn btn-light col-3 justify-content-center"
+        id="end-test-button"
+        ng-click="printMessage()"
+      >
+        End test
+      </button>
     </nav>
-    <div ng-controller="header-controller">
-        {{countTimer}}
+    <div ng-controller="Question-Mover">
+      <div class="question-pallete">
+        <ul class="list-unstyled">
+          <li ng-repeat="n in range(1,10)">
+            <button id="ques-{{n}}" class="circular-buttons" ng-click="displayQuestion(this.id)">
+              {{n}}              
+            </button>
+          </li>
+        </ul>
+      </div>      
+      <button class="left-button shadow p-3 bg-danger rounded btn btn-danger">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <button class="right-button shadow p-3 bg-danger rounded btn btn-danger">
+        <i class="fas fa-arrow-right"></i>
+      </button>
+      <div class="container border border-danger mt-5 shadow p-3 mb-5 rounded">
+        <div class="row">
+          <div class="col-12">
+            <div class="d-flex flex-row">
+              <ul class="list-unstyled">
+                <li>
+                  <p>{{question.id}}</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{test}}
     </div>
-    <div>
-        
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <div></div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+      crossorigin="anonymous"
+    ></script>
     <script src="index.js"></script>
-</body>
+  </body>
 </html>
