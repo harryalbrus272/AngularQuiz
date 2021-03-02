@@ -90,7 +90,7 @@ app.controller("main-controller", function ($scope, $interval) {
       opt4: " None of These ",
     },
   ];
-  $scope.time = 3;
+  $scope.time = 200;
   $scope.QuestionVisible = true;
   $scope.resultArray = Array($scope.questions.length).fill("");
   $scope.currentQuestion = $scope.questions[0];
